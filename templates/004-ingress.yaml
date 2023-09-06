@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.proceset.name }}
 spec:
   rules:
-    - host: proceset.ecpk.sibintek.ru
+    - host: {{ .Values.proceset.nameIngress }}
       http:
         paths:
           - backend:

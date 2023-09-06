@@ -4,6 +4,7 @@ proceset:
     tag: d230504
   name: proceset
   storageClassName: sc-topolvm-data
+  nameIngress: proceset.ecpk.sibintek.ru 
   replicasCount: 1
   MemoryData: 30Gi
   MemoryLog: 1Gi
