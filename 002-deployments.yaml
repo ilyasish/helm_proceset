@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.proceset.name }}
+  name: {{ .Values.proceset.name }}
+spec:
+  replicas: {{ .Values.proceset.replicascount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.proceset.name }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.proceset.name }}
+    spec:
+      containers:
+        - image: {{ .Values.proceset.image.repository }}:{{ .Values.proceset.image.tag }}
+          name: {{ .Values.proceset.name }}
+          ports:
+            - containerPort: 8010
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/infomaximum/data/
+              name: data
+            - mountPath: /var/log/infomaximum/ 
+              name: logs
+      restartPolicy: Always
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: data
+        - name: logs
+          persistentVolumeClaim:
+            claimName: logs
+status: {}
+

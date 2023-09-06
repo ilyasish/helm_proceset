@@ -1,0 +1,20 @@
+proceset:
+  image:
+    repository: dockerhub.office.infomaximum.com/infomaximum/infomaximum_app
+    tag: d230504
+  name: proceset
+  storageClassName: sc-topolvm-data
+  replicasCount: 1
+  MemoryData: 30Gi
+  MemoryLog: 1Gi
+clickhouse:
+  image:
+    repository: clickhouse/clickhouse-server
+    tag: 22.8.3.13-alpine
+  name: cl-pr
+  containername: clikchouse
+  storageClassName: sc-topolvm-data
+  shardsCount: 1
+  replicasCount: 1
+  MemoryData: 30Gi
+  MemoryLog: 1Gi

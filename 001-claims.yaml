@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: data
+  name: data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.proceset.storageClassName }}
+  resources:
+    requests:
+      storage: {{ .Values.proceset.MemoryData }}
+status: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: logs
+  name: logs
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.proceset.storageClassName }} 
+  resources:
+    requests:
+      storage: {{ .Values.proceset.MemoryLog }}
+status: {}
